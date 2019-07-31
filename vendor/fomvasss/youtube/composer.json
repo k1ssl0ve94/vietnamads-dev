@@ -1,0 +1,34 @@
+{
+    "name": "fomvasss/youtube",
+    "description": "Package for generate IFrame with youtube-link",
+    "keywords": ["laravel", "youtube", "video"],
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "role": "Company",
+            "name": "WebWest",
+            "homepage": "http://web-west.net.ua"
+        },
+        {
+            "role": "Developer",
+            "name": "Fomin Vasyl",
+            "email": "fomvasss@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fomvasss\\Youtube\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fomvasss\\Youtube\\YoutubeServiceProvider"
+            ]
+        }
+    }
+}

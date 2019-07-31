@@ -1,0 +1,65 @@
+footer {
+  min-height: 300px;
+  font-size: 12px;
+
+  h2 {
+    font-size: 16px;
+    color: #1268b3;
+    font-weight: bold;
+    a {
+      color: #1268b3;
+    }
+  }
+
+  #subscribe-bar {
+    background-color: #b31217;
+    background-image: linear-gradient(#b31217, #e52d27);
+    height: 63px;
+    color: #fff;
+    text-align: center;
+    line-height: 63px;
+    font-size: 20px;
+    font-weight: 400;
+
+    @media screen and (max-width:576px) {
+      height: auto;
+    }
+  }
+
+  .seo-links {
+    background: #efefef;
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+    .link-list li {
+      margin-bottom: 0px;
+    }
+  }
+
+  .footer-info {
+    background-color: #d4d4d4;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    .link-list li {
+      margin-bottom: 6px;
+    }
+    .link-list a {
+      color: #343434;
+    }
+    .logo {
+      display: block;
+      margin-bottom: 10px;
+      img {
+        height: 16px;
+      }
+    }
+    .seo-links .row .col {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+    .row > div:last-child {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

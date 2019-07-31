@@ -1,0 +1,113 @@
+@import "../tabler/css/dashboard.css";
+@import "../tabler/plugins/charts-c3/plugin.css";
+@import "../tabler/plugins/maps-google/plugin.css";
+@import "~vue-multiselect/dist/vue-multiselect.min.css";
+@import "~vue-datetime/dist/vue-datetime.min.css";
+@import "~summernote/dist/summernote-bs4.css";
+@import "~vue2-dropzone/dist/vue2Dropzone.min.css";
+
+.alert {
+    ul {
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+.card {
+    .dimmer {
+        display: flex;
+        background-color: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 500;
+
+        .loader {
+            top: 80px;
+        }
+    }
+    .card-header{
+        //color: #ffffff;
+    }
+}
+
+.form-group.row {
+    display: flex;
+}
+
+.badge-open {
+    background-color: #f1c40f;
+}
+
+.badge-under-repair {
+    background-color: #a55eea;
+}
+
+.badge-buy-off {
+    background-color: #45aaf2;
+}
+
+.badge-close {
+    background-color: #5eba00;
+}
+
+.badge-cancel {
+    background-color: black;
+    color: #fff;
+}
+
+.btn-complete {
+    background-color: #5eba00;
+    color: #fff;
+}
+
+.btn-pending {
+    background-color: #f1c40f;
+    color: #fff;
+}
+
+.note-editor {
+    .note-toolbar {
+        background: #eee;
+        min-height: 3.5rem;
+
+        &>.note-btn-group {
+            display: inline-block;
+        }
+    }
+
+    .note-btn i {
+        font-size: 13px;
+    }
+
+    .note-popover .popover-content>.btn-group,
+    .card-header.note-toolbar>.btn-group {
+        margin-top: 0;
+    }
+}
+.v-select {
+    width: 100%;
+    .close:before {
+        content: '';
+        display: none !important;
+    }
+    .dropdown-toggle:after {
+        display: none !important;
+    }
+    .selected-tag {
+        padding: 0.2em .5em;
+    }
+
+    input[type=search], input[type=search]:focus {
+        padding: 4px 7px;
+    }
+
+    .vs__actions {
+    }
+}
+.v-select .vs__actions {
+    padding: 0 3px 0 1px !important;
+}
+.form-group input[type=number] {
+    text-align: right;
+}

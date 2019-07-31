@@ -1,0 +1,127 @@
+<?php
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('sitemap', 'HomeController@sitemap')->name('sitemap');
+
+Route::get('lien-he', 'HomeController@contact')->name('contact');
+Route::get('tu-van-chien-dich-quang-cao', 'HomeController@consult')->name('consult');
+Route::post('san-pham-mau', 'HomeController@demoProduct');
+Route::get('product-data', 'HomeController@productData');
+
+Route::get('bao-gia', 'HomeController@pricing')->name('pricing');
+Route::get('bao-gia/{page?}', 'HomeController@guide')->name('sub-bao-gia');
+Route::get('huong-dan/{page?}', 'HomeController@guide')->name('guide');
+Route::get('chinh-sach-bao-mat', 'HomeController@baoMat')->name('baoMat');
+Route::get('quy-che-hoat-dong', 'HomeController@hoatDong')->name('hoatDong');
+Route::get('giai-quyet-tranh-chap', 'HomeController@tranhChap')->name('tranhChap');
+Route::get('gioi-thieu/{page?}', 'HomeController@about')->name('about');
+
+Route::get('locale/{locale}', 'HomeController@changeLocale')->name('locale');
+
+Route::post('register', 'AuthController@register')->name('register');
+Route::post('login', 'AuthController@login');
+Route::get('logout', 'AuthController@logout')->name('logout');
+Route::get('login-facebook', 'AuthController@loginFacebook');
+Route::get('login-facebook-callback', 'AuthController@facebookCallback');
+Route::get('login-google', 'AuthController@loginGoogle');
+Route::get('login-google-callback', 'AuthController@googleCallback');
+Route::get('activate/{token}', 'AuthController@activate')->name('activate');
+Route::get('activate_sms/{token}', 'UserController@activate')->name('activate_sms');
+//Route::post('sms/resend', 'AuthController@resendSmsCode')->name('smsResend');
+Route::post('request-forgot-password', 'AuthController@requestForgotPassword');
+Route::get('forgot-password/{token?}', 'AuthController@getForgotPassword')->name('get-forgot-password');
+Route::post('forgot-password', 'AuthController@postForgotPassword')->name('forgot-password');
+
+Route::post('/send-message', 'UserController@sendMessage')->name('message-get-sender');
+Route::get('/tin-nhan', 'UserController@messages')->name('message-box');
+Route::post('/message/content', 'UserController@getMessage')->name('message-get-content');
+//Route::get('/message/list/{page?}', 'UserController@getMessageSender');
+
+Route::get('dang-tin/cho-thue-quang-cao', 'ProductController@getCreateAd')->name('get-create-product');
+Route::post('dang-tin/pano', 'ProductController@postCreatePano');
+Route::post('dang-tin/ad', 'ProductController@postCreateAd');
+Route::post('dang-tin/social', 'ProductController@postCreateSocial');
+Route::post('dang-tin/web', 'ProductController@postCreateWeb');
+Route::post('dang-tin/other', 'ProductController@postCreateOther');
+Route::post('dang-tin/find', 'ProductController@postCreateFind');
+Route::post('upload-image', 'ProductController@uploadImage');
+Route::get('product/{product}/refresh', 'ProductController@refresh')->name('refresh');
+Route::post('product/{productId}/set_auto', 'ProductController@setAuto')->name('set_auto');
+Route::get('/{catSlug}/{slug}.n{id}', 'ProductController@show')
+    ->where([
+        'catSlug' => '[a-zA-Z0-9\-]+',
+        'slug' => '[a-zA-Z0-9\-]+',
+        'id' => '[0-9]+',
+    ])->name('product-detail');
+
+Route::get('tim-kiem', 'CategoryController@index')->name('search');
+Route::get('/tag/{slug}.{id}', 'CategoryController@viewByTag')->name('tag');
+
+Route::get('/user/{id}/tin-rao', 'CategoryController@userProduct')->name('user-product');
+
+Route::get('/tin-tuc', 'PostController@index')->name('news');
+Route::get('/tin-tuc/phan-tich-nhan-dinh', 'PostController@phanTich')->name('phan-tich');
+Route::get('/tin-tuc/su-kien', 'PostController@suKien')->name('su-kien');
+Route::get('/tin-tuc/chia-se-kinh-nghiem', 'PostController@kinhNghiem')->name('kinh-nghiem');
+
+Route::get('/tin-tuc/thuong-hieu-san-pham', 'PostController@thuongHieu')->name('thuong-hieu');
+Route::get('/tin-tuc/chinh-sach-quan-ly', 'PostController@chinhSach')->name('chinh-sach');
+Route::get('/tin-tuc/thong-bao', 'PostController@thongBao')->name('thong-bao');
+
+Route::get('/tin-tuc/{slug}.p{id}.html', 'PostController@show')
+    ->where([
+        'slug' => '[a-zA-Z0-9\-]+',
+        'id' => '[0-9]+',
+    ])->name('post-detail');
+
+Route::get('trang-ca-nhan', 'UserController@profile')->name('profile');
+Route::get('lich-su-giao-dich', 'UserController@bills')->name('bills');
+
+Route::get('huong-dan-nap-tien', 'UserController@pointGuide')->name('pointGuide');
+Route::get('nap-tien', 'UserController@addPoint')->name('add_point');
+Route::post('nap-tien', 'UserController@addPoint')->name('add_point_post');
+Route::post('captcha/new', 'AuthController@getNewCaptcha')->name('get_new_captcha');
+
+Route::get('payment/callback', 'UserController@paymentCallback')->name('payment_callback');
+Route::post('valid-code', 'UserController@validGiftCode')->name('valid_gift_code');
+Route::get('payment/ipn', 'UserController@ipnCallback')->name('ipn_callback');
+
+Route::post('change-password', 'UserController@changePassword')->name('change-password');
+Route::post('update-avatar', 'UserController@updateAvatar')->name('update-avatar');
+Route::post('profile', 'UserController@updateprofile')->name('update-profile');
+Route::post('subscription', 'SubscriberController@create');
+
+Route::get('/ban-do/ajax', 'CategoryController@mapAjax');
+Route::get('/ban-do/{catSlug}', 'CategoryController@map')->where('catSlug', '[a-zA-Z0-9\-]+')->name('category_map');
+Route::get('/ban-do/{catSlug}/{slug}', 'CategoryController@subMap')
+    ->where([
+        'catSlug' => '[a-zA-Z0-9\-]+',
+        'slug' => '[a-zA-Z0-9\-]+',
+    ]);
+Route::get('tin-rao/cap-nhat/p{id}.html', 'ProductController@edit')->name('user_product_edit');
+Route::post('tin-rao/cap-nhat/p{id}.html', 'ProductController@edit');
+
+Route::get('/goi-y/{slug}/{id}', 'CategoryController@classCategory')->name('class-category');
+
+Route::get('/{catSlug}', 'CategoryController@category')->where('catSlug', '[a-zA-Z0-9\-]+')->name('category');
+
+Route::get('/{catSlug}/{slug}', 'CategoryController@subCategory')
+    ->where([
+        'catSlug' => '[a-zA-Z0-9\-]+',
+        'slug' => '[a-zA-Z0-9\-]+',
+    ])->name('subcat');
+
+Route::get('/{catSlug}/{slug}/{city}', 'CategoryController@subCategoryCity')
+    ->where([
+        'catSlug' => '[a-zA-Z0-9\-]+',
+        'slug' => '[a-zA-Z0-9\-]+',
+        'city' => '[a-zA-Z0-9\-]+',
+    ])->name('subcatcity');
+
+Route::get('/{catSlug}/{slug}/{city}/{district}', 'CategoryController@subCategoryDistrict')
+    ->where([
+        'catSlug' => '[a-zA-Z0-9\-]+',
+        'slug' => '[a-zA-Z0-9\-]+',
+        'city' => '[a-zA-Z0-9\-]+',
+        'district' => '[a-zA-Z0-9\-]+',
+    ])->name('subcatdistrict');    
