@@ -24,7 +24,7 @@
         "vue": "^2.6.9"
     },
     "dependencies": {
-        "chart.js": "^2.8.0",
+        "chart.js": "^2.9.4",
         "codemirror": "^5.44.0",
         "date-fns": "^1.29.0",
         "font-awesome": "^4.7.0",
